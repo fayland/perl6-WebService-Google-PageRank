@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/fayland/perl6-WebService-Google-PageRank.svg?branch=master)](https://travis-ci.org/fayland/perl6-WebService-Google-PageRank)
 
-*ALPHA STAGE, SUBJECT TO CHANGE*
-
 ## SYNOPSIS
 
     use WebServices::GitHub;
