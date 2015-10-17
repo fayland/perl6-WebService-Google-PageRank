@@ -1,6 +1,6 @@
 use v6;
 
-unit class WebService::Google::PageRank;
+unit module WebService::Google::PageRank;
 
 use URI::Escape;
 use HTTP::Tinyish;
@@ -72,7 +72,7 @@ class X::WebService::Google::PageRank is Exception {
     }
 }
 
-method get_pagerank($url) {
+sub get_pagerank($url) is export {
     state $ua = HTTP::Tinyish.new(agent => "Mozilla/4.0 (compatible; GoogleToolbar 2.0.114-big; Windows XP 5.1)");
 
     my $hsh = check_hash(hash_url($url));

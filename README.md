@@ -7,7 +7,7 @@
 ```
 use WebService::Google::PageRank;
 
-say WebService::Google::PageRank.get_pagerank('https://www.google.com/'); # "9"
+say get_pagerank('https://www.google.com/'); # "9"
 ```
 
 ## DESCRIPTION
