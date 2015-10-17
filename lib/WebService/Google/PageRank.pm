@@ -63,14 +63,29 @@ my sub check_hash($hash_int) {
     return '7' ~ $check_byte ~ $hash_str;
 }
 
+class X::WebService::Google::PageRank is Exception {
+    has $.status;
+    has $.reason;
+
+    method message {
+        "Error: '$.status $.reason'";
+    }
+}
+
 method get_pagerank($url) {
     state $ua = HTTP::Tinyish.new(agent => "Mozilla/4.0 (compatible; GoogleToolbar 2.0.114-big; Windows XP 5.1)");
 
     my $hsh = check_hash(hash_url($url));
     my $gurl = 'http://toolbarqueries.google.com/tbr?client=navclient-auto&features=Rank:&q=info:' ~ uri-escape($url) ~ '&ch=' ~ $hsh;
     my %res = $ua.get($gurl);
+    # say %res.perl;
+
+    if ! %res<success> {
+        X::WebService::Google::PageRank.new(status => %res<status>, reason => %res<reason>).throw;
+    }
+
     # :content("Rank_1:1:9\n")
-    if (%res<content>.starts-with("Rank_")) {
+    if %res<content>.starts-with("Rank_") {
         return substr(%res<content>.trim, 9, %res<content>.trim.chars - 9);
     }
 

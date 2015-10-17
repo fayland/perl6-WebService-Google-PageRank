@@ -9,3 +9,8 @@ use WebService::Google::PageRank;
 
 say WebService::Google::PageRank.get_pagerank('https://www.google.com/'); # "9"
 ```
+
+## DESCRIPTION
+
+ * it throws on HTTP error
+ * it returns Any if the url does not have rank.
