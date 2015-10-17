@@ -4,6 +4,8 @@
 
 ## SYNOPSIS
 
-    use WebServices::GitHub;
+```
+use WebService::Google::PageRank;
 
-    my $rank = WebService::Google::PageRank.get_pagerank('https://www.google.com/'); # "9"
+say WebService::Google::PageRank.get_pagerank('https://www.google.com/'); # "9"
+```

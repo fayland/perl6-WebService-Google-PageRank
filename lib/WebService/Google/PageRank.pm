@@ -63,7 +63,7 @@ my sub check_hash($hash_int) {
     return '7' ~ $check_byte ~ $hash_str;
 }
 
-method get_pagerank($url) is export {
+method get_pagerank($url) {
     state $ua = HTTP::Tinyish.new(agent => "Mozilla/4.0 (compatible; GoogleToolbar 2.0.114-big; Windows XP 5.1)");
 
     my $hsh = check_hash(hash_url($url));
